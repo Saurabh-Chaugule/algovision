@@ -1,0 +1,85 @@
+// Prisma schema for AlgoVision database
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String          @id @default(cuid())
+  email         String          @unique
+  username      String          @unique
+  password      String
+  firstName     String?
+  lastName      String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  // Relations
+  savedAlgorithms SavedAlgorithm[]
+  executionHistory ExecutionHistory[]
+
+  @@map("users")
+}
+
+model SavedAlgorithm {
+  id              String   @id @default(cuid())
+  userId          String
+  algorithmType   String   // e.g., "bubble-sort", "dijkstra", etc.
+  name            String   // User-defined name for this saved configuration
+  description     String?
+  configuration   Json     // Stores input data, parameters, etc.
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("saved_algorithms")
+  @@index([userId])
+  @@index([algorithmType])
+}
+
+model ExecutionHistory {
+  id              String   @id @default(cuid())
+  userId          String
+  algorithmType   String
+  algorithmName   String
+  inputData       Json     // Input provided by user
+  steps           Json     // Array of visualization steps
+  executionTime   Int      // Execution time in milliseconds
+  comparisons     Int?     // Number of comparisons (for sorting)
+  swaps           Int?     // Number of swaps (for sorting)
+  iterations      Int?     // Total iterations
+  spaceComplexity String?  // e.g., "O(n)", "O(log n)"
+  timeComplexity  String?  // e.g., "O(n^2)", "O(n log n)"
+  createdAt       DateTime @default(now())
+
+  // Relations
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("execution_history")
+  @@index([userId])
+  @@index([algorithmType])
+  @@index([createdAt])
+}
+
+model Algorithm {
+  id              String   @id @default(cuid())
+  type            String   @unique // e.g., "bubble-sort", "binary-search"
+  name            String   // Display name
+  category        String   // "sorting", "searching", "graph", "tree"
+  description     String
+  timeComplexity  Json     // {best: "O(n)", average: "O(n^2)", worst: "O(n^2)"}
+  spaceComplexity String   // e.g., "O(1)"
+  difficulty      String   // "easy", "medium", "hard"
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("algorithms")
+  @@index([category])
+}

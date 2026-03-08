@@ -1,0 +1,159 @@
+.visualizer-page {
+  padding: 30px 0 60px;
+  min-height: calc(100vh - 60px);
+  background: var(--bg);
+}
+
+.visualizer-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.visualizer-header h1 { font-size: 30px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+.visualizer-header p  { color: var(--text-secondary); }
+
+.visualizer-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ── Controls Panel ── */
+.controls-panel { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 80px; }
+.controls-panel h3 { font-size: 18px; font-weight: 600; color: var(--text-primary); }
+
+.algorithm-info {
+  padding: 14px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+}
+.algorithm-info p { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; line-height: 1.5; }
+.complexity-info  { display: flex; gap: 16px; font-size: 13px; color: var(--text-primary); }
+.complexity-info strong { color: var(--primary); }
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+
+.action-buttons { display: flex; flex-direction: column; gap: 10px; }
+.btn-full { width: 100%; justify-content: center; }
+
+.execution-stats {
+  padding: 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+}
+.execution-stats h4 { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 12px; }
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--card-border);
+  font-size: 13px;
+}
+.stat-item:last-child { border-bottom: none; }
+.stat-item span   { color: var(--text-secondary); }
+.stat-item strong { color: var(--text-primary); font-weight: 600; }
+
+/* ── Visualization Panel ── */
+.visualization-panel { display: flex; flex-direction: column; gap: 16px; }
+
+/* ── Empty State ── */
+.empty-state {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 80px 40px; text-align: center;
+}
+.empty-icon { font-size: 64px; margin-bottom: 16px; }
+.empty-state h3 { font-size: 22px; color: var(--text-primary); margin-bottom: 8px; }
+.empty-state p  { color: var(--text-secondary); }
+
+/* ── Playback Controls ── */
+.playback-controls { display: flex; flex-direction: column; gap: 16px; }
+
+.progress-bar { display: flex; flex-direction: column; gap: 8px; }
+.progress-info {
+  display: flex; justify-content: space-between;
+  font-size: 13px; color: var(--text-secondary);
+}
+
+.slider {
+  width: 100%;
+  accent-color: var(--primary);
+  cursor: pointer;
+  height: 4px;
+}
+
+.control-buttons {
+  display: flex; justify-content: center;
+  gap: 10px; flex-wrap: wrap;
+}
+
+.speed-control { display: flex; flex-direction: column; gap: 6px; }
+.speed-control label { font-size: 13px; color: var(--text-secondary); }
+
+.step-message {
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  border: 1px solid var(--card-border);
+}
+
+/* ── MODAL (DARK MODE FIXED) ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+  padding: 20px;
+}
+
+.modal {
+  background: var(--card-bg);        /* ← uses theme variable, not hardcoded white */
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  border-radius: 14px;
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s;
+}
+
+.modal h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.modal .label  { color: var(--text-primary); }
+.modal .input  {
+  background: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}
+.modal .input:focus { border-color: var(--primary); }
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .visualizer-layout { grid-template-columns: 1fr; }
+  .controls-panel    { position: static; }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "algovision",
+  "version": "1.0.0",
+  "description": "Interactive Algorithm Visualizer & Sandbox",
+  "scripts": {
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run dev",
+    "setup": "cd backend && npm install && cd ../frontend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "algorithm",
+    "visualizer",
+    "education",
+    "sorting",
+    "searching",
+    "interactive",
+    "react",
+    "nodejs",
+    "postgresql"
+  ],
+  "author": "AlgoVision Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/algovision.git"
+  }
+}

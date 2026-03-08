@@ -1,0 +1,127 @@
+.saved-page {
+  padding: 40px 0;
+  min-height: calc(100vh - 60px);
+}
+
+.saved-header {
+  margin-bottom: 32px;
+}
+
+.saved-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.saved-header p {
+  color: var(--gray);
+}
+
+.saved-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+.saved-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.saved-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.saved-card-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  flex: 1;
+}
+
+.algorithm-badge {
+  padding: 4px 12px;
+  background: var(--primary);
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.saved-description {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.saved-config {
+  background: var(--bg);
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.config-display {
+  margin-top: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: var(--dark);
+}
+
+.saved-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--gray);
+  padding-top: 12px;
+  border-top: 1px solid var(--light-gray);
+}
+
+.saved-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.action-group {
+  display: flex;
+  gap: 8px;
+}
+
+.action-group .btn {
+  flex: 1;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-actions .btn {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .saved-header h1 {
+    font-size: 24px;
+  }
+
+  .saved-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .saved-meta {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
