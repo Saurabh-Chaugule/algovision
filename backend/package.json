@@ -10,15 +10,15 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
+    "build": "prisma generate",
+    "postinstall": "prisma generate",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:studio": "prisma studio"
+    "prisma:deploy": "prisma migrate deploy",
+    "prisma:studio": "prisma studio",
+    "prisma:seed": "node prisma/seed.js"
   },
-  "keywords": [
-    "algorithm",
-    "visualizer",
-    "education"
-  ],
+  "keywords": ["algorithm", "visualizer", "education"],
   "author": "AlgoVision Team",
   "license": "MIT",
   "dependencies": {
