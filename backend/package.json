@@ -1,7 +1,6 @@
 {
   "name": "algovision-backend",
   "version": "1.0.0",
-  "description": "Backend API for AlgoVision algorithm visualizer",
   "main": "src/server.js",
   "type": "module",
   "prisma": {
@@ -10,17 +9,9 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "build": "prisma generate",
-    "postinstall": "prisma generate",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:deploy": "prisma migrate deploy",
-    "prisma:studio": "prisma studio",
-    "prisma:seed": "node prisma/seed.js"
+    "build": "cd ../frontend && npm install && npm run build && cd ../backend && npx prisma generate",
+    "postinstall": "npx prisma generate"
   },
-  "keywords": ["algorithm", "visualizer", "education"],
-  "author": "AlgoVision Team",
-  "license": "MIT",
   "dependencies": {
     "@prisma/client": "5.9.1",
     "bcrypt": "^5.1.1",
