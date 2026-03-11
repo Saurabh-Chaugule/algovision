@@ -19,7 +19,7 @@ router.get('/', getAlgorithms);
 router.post('/execute', optionalAuthenticate, executeAlgorithm);
 
 // Protected
-router.post('/save',         authenticate, saveAlgorithm);
+router.post('/saved',         authenticate, saveAlgorithm);
 router.get('/saved',         authenticate, getSavedAlgorithms);
 router.get('/saved/:id',     authenticate, getSavedAlgorithm);
 router.put('/saved/:id',     authenticate, updateSavedAlgorithm);
